@@ -1,0 +1,143 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url("coloredimage.jpg");
+    background-size: cover;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: white;
+    text-decoration: solid;
+}
+header{
+    height: 10vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgb(0, 0, 0);
+}
+nav{
+    display: flex;
+}
+.logo{
+    width: 70vw;
+    height: 100%;
+    padding-left: 1.5rem;
+}
+.img{
+    position: absolute;
+    top: -40px;
+    height: 20vh;
+    width: 20vh;
+    background-image: url("byte-talk1-removebg-preview.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+
+}
+.customer-services{
+    float: right;
+    width: 30vw;
+    height: 100%;
+    display: flex;
+    font-size: large;
+    font-weight: 500;
+    display: grid;
+    place-items: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 100%;
+    /* gap: space-evenly; */
+}
+.customer-services div{
+    height: 5vh;
+    width: 8vw;
+    padding: 1.5rem;
+}
+.customer-services div:hover{
+    background-color: #ff0000;
+}
+main{
+    height: 80vh;
+    width: 100vw;
+    display: flex;
+    gap: 5rem;
+}
+.main-div{
+    height: 72vh;
+    width: 40vw;
+    background-color: #2472769b;
+    border-radius: 2rem;
+    padding: 2rem;
+}
+.info{
+    position: absolute;
+    top: 12.5vh;
+    left: 5vw;
+}
+.login{
+    position: absolute;
+    top: 12.5vh;
+    right: 5vw;
+    display: grid;
+    place-items: center;
+}
+form{
+    /* border: 2px solid black; */
+    height: 90%;
+    width: 50%;
+}
+h1{
+    top: 20px;
+}
+label{
+    height: 10%;
+    width: 100%;
+    font-size: large;
+}
+input{
+    height: 1.5rem;
+    width: 100%;
+    margin-bottom: 15px;
+}
+.signup{
+    position: absolute;
+    top: 12.5vh;
+    right: 5vw;
+    background-color: #a5171700;
+    height: 72vh;
+    z-index: -1;
+}
+.submit{
+    margin-top:25px ;
+    margin-left: 80px;
+}
+.btn{
+    height: 30px;
+    width: 100px;
+}
+footer{
+    height: 10vh;
+    width: 100vw;
+    background-color:rgba(70, 68, 68, 0.707);
+    color: rgb(0, 0, 0);
+    display: grid;
+    place-items: center;
+    font-weight: 600;
+}
+.signup-slide{
+    position: absolute;
+    top: 12.5vh;
+    left: 5vw;
+    z-index: 10;
+    background-color: #a51717;
+}
+.info-slide{
+    position: absolute;
+    top: 12.5vh;
+    right: 5vw;
+    z-index: 10;
+}
