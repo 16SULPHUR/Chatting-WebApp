@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-    background-image: url("coloredimage.jpg");
+    background-image: url("../resources/background.jpg");
     background-size: cover;
 }
 a{
@@ -34,7 +34,7 @@ nav{
     top: -40px;
     height: 20vh;
     width: 20vh;
-    background-image: url("byte-talk1-removebg-preview.png");
+    background-image: url("../resources/logo.png");
     background-size: contain;
     background-repeat: no-repeat;
 
