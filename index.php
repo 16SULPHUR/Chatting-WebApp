@@ -9,8 +9,37 @@
 </head>
 
 <body>
+
+    <!-- Connecting to database -->
+    <?php include 'partials/_connectdb.php';?>
+
     <!-- including header -->
     <?php include 'partials/_header.php';?>
+
+
+    <!-- sign up php script -->
+    <?php 
+        if($_SERVER['REQUEST_METHOD'] === 'POST'){
+            if(isset($_POST["signup_submit"])){
+                
+                $email = $_POST["email"];
+                $username = $_POST["username"];
+                $password = $_POST["password"];
+
+                $sql = "INSERT INTO `user information` (`id`, `email`, `name`, `password`) VALUES ('', '$email', '$username', '$password');";
+                $result = mysqli_query($conn, $sql);
+            }
+            
+            // else if(isset($_POST["login_submit"])){
+                
+            //     $email = $_POST["email"];
+            //     $password = $_POST["password"];
+
+            //     $sql = "INSERT INTO `user information` (`id`, `email`, `name`, `password`) VALUES ('', '$email', '$username', '$password');";
+            //     $result = mysqli_query($conn, $sql);
+            // }
+        }
+    ?>
 
     <main>
         <div class="info main-div">
@@ -25,13 +54,15 @@
         <div class="login main-div">
             <h1>Login</h1>
             <form action="">
-                <label for="login" class="login-username label">Username:</label><br>
-                <input type="text" class="login-email input" name="login" placeholder="Username / e-mail"><br>
-                <label for="login-password" class="login-password-label label">Password:</label><br>
-                <input type="password" name="login-password" id="" class="login-password input" placeholder="Password">
-                <input type="submit" value="Submit" class="btn submit"><br>
-                <!-- <button id="signup-btn" class="signup-btn" onclick="change()">Click here,</button>to sign-up. -->
-                <a href="signup.php">Sign up</a>
+                <label for="login" class="login-username label">email:</label><br>
+                <input type="email" id="email" class="login-email input" name="email" placeholder="e-mail"><br>
+
+                <label for="password" class="login-password-label label">Password:</label><br>
+                <input type="password" name="password" id="" class="login-password input" placeholder="Password">
+
+                <input type="button" name="login_submit" value="Submit" class="btn submit" onclick="loginto()"><br>
+
+                <a href=" signup.php">Sign up</a>
             </form>
         </div>
         <div class="signup main-div">
@@ -41,6 +72,12 @@
     <footer>
         Byte Talk chatting app. Created to connect people.
     </footer>
+
+    <script>
+    function loginto() {
+        window.location.href = "home.php?email=" + document.getElementById('email').value;
+    }
+    </script>
 
 </body>
 
