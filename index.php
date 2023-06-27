@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Byte Talk</title>
     <link rel="stylesheet" href="styles/style.css">
+
+    <!-- password encription-decription library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
+        integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -26,18 +31,28 @@
                 $username = $_POST["username"];
                 $password = $_POST["password"];
 
-                $sql = "INSERT INTO `user information` (`id`, `email`, `name`, `password`) VALUES ('', '$email', '$username', '$password');";
+                $sql = "INSERT INTO `user information` (`email`, `username`, `password`) VALUES ('$email', '$username', '$password');";
                 $result = mysqli_query($conn, $sql);
             }
             
-            // else if(isset($_POST["login_submit"])){
+            else if(isset($_POST["login_submit"])){
                 
-            //     $email = $_POST["email"];
-            //     $password = $_POST["password"];
+                $email = $_POST["email"];
+                $enteredPassword = $_POST["password"];
 
-            //     $sql = "INSERT INTO `user information` (`id`, `email`, `name`, `password`) VALUES ('', '$email', '$username', '$password');";
-            //     $result = mysqli_query($conn, $sql);
-            // }
+                $sql = "SELECT * FROM `user information` WHERE `email` = '$email'";
+                $result = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_assoc($result);
+                $actualPassword = $row['password'];
+                $username = $row['username'];
+                
+                if($enteredPassword == $actualPassword){
+                    header("location:home.php?username=$username");
+                }
+                else{
+                    echo "<h1>wrong Password</h1>";
+                }
+            }
         }
     ?>
 
@@ -53,14 +68,15 @@
         </div>
         <div class="login main-div">
             <h1>Login</h1>
-            <form action="">
+            <form action="" method="POST">
                 <label for="login" class="login-username label">email:</label><br>
                 <input type="email" id="email" class="login-email input" name="email" placeholder="e-mail"><br>
 
                 <label for="password" class="login-password-label label">Password:</label><br>
-                <input type="password" name="password" id="" class="login-password input" placeholder="Password">
+                <input type="password" name="password" id="password" class="login-password input"
+                    placeholder="Password">
 
-                <input type="button" name="login_submit" value="Submit" class="btn submit" onclick="loginto()"><br>
+                <input type="submit" name="login_submit" value="Submit" class="btn submit"><br>
 
                 <a href=" signup.php">Sign up</a>
             </form>
@@ -73,11 +89,7 @@
         Byte Talk chatting app. Created to connect people.
     </footer>
 
-    <script>
-    function loginto() {
-        window.location.href = "home.php?email=" + document.getElementById('email').value;
-    }
-    </script>
+
 
 </body>
 
