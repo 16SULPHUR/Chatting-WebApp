@@ -28,7 +28,7 @@
 
 
     <main>
-        <div class="info main-div">
+        <div class="main-div">
             <h2>Login to start chatting with your friends.</h2><br>
             This is a chatting app that has been created to help people connect with each other no matter where they
             are.
@@ -37,9 +37,12 @@
             voluptatum sequi porro nihil odit, vero ipsum, officiis similique. Excepturi praesentium commodi rerum
             suscipit asperiores? Praesentium maxime omnis, voluptatum totam repellat ipsa dolor!
         </div>
-        <div class="login main-div">
+
+        <!-- Log-in form -->
+        <div class="main-div">
             <h1>Login</h1>
             <form action="./home.pug" method="post" id="loginForm">
+                <input type="hidden" name="formType" value="login">
                 <label for="login" class="login-username label">email:</label><br>
                 <input type="email" id="email" class="login-email input" name="email" placeholder="e-mail"><br>
     
@@ -47,8 +50,28 @@
                 <input type="password" name="password" id="password" class="login-password input" placeholder="Password">
     
                 <input type="submit" value="Submit" class="btn submit"><br>
+
+            </form>
+        </div>
+        <div class="signup main-div">
     
-                <a href=" signup.php">Sign up</a>
+        </div>
+        
+        <!-- Sign-up form -->
+        <div class="main-div">
+            <h1>Sign up</h1>
+            <form action="./home.pug" method="post" name="signup">
+                <input type="hidden" name="formType" value="signup">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="email"> <br>
+            
+                <label for="username">Email</label>
+                <input type="text" name="username" id="username" placeholder="username"> <br>
+            
+                <label for="password">Email</label>
+                <input type="password" name="password" id="password" placeholder="password"> <br>
+            
+            
             </form>
         </div>
         <div class="signup main-div">

@@ -13,7 +13,7 @@ var conn = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
-  database : "chatting webapp",
+  database: "chatting webapp",
 });
 
 conn.connect(function (err) {
@@ -22,27 +22,52 @@ conn.connect(function (err) {
 });
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use(express.urlencoded())
+app.use(express.urlencoded());
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "./tamplates/index.html"));
 });
 
-app.post("/home.pug", (req, res) => {
-  let email = req.body.email;
-  let password = req.body.password;
+app.get("/signup.pug", (req, res) => {
+  res.render(path.join(__dirname, "./tamplates/signup.pug"));
+});
 
-  var sql = "INSERT INTO `user information` (`password`, `id`, `email`, `username`) VALUES ('"+password+"', '', '"+email+"', '"+"testUser"+"');";
-  conn.query(sql, function (err, result) {
-    if (err) throw err;
-    console.log("Table created");
-  });
-  
-  const params = { "email": email, "password": password };
+app.post("/home.pug", (req, res) => {
+
+  if (req.body.formTitle === "login") {
+    const { formTitle, email, password } = req.body;
+    console.log(email)
+
+    // var sqquery =
+    //   "INSERT INTO `user information` (`password`, `id`, `email`, `username`) VALUES ('');";
+    // conn.query(sql, function (err, result) {
+    //   if (err) throw err;
+    //   console.log("Table created");
+    // });
+  }
+  // else if (req.body.formTitle === "signup") {
+  //   let email = req.body.email;
+  //   let password = req.body.password;
+  //   let username = req.body.username;
+
+  //   var sql =
+  //     "INSERT INTO `user information` (`password`, `id`, `email`, `username`) VALUES ('" +
+  //     password +
+  //     "', '', '" +
+  //     email +
+  //     "', '" +
+  //     "testUser" +
+  //     "');";
+  //   conn.query(sql, function (err, result) {
+  //     if (err) throw err;
+  //     console.log("Table created");
+  //   });
+  // }
+
+  const params = { email: email, password: password };
   res.render(path.join(__dirname, "./tamplates/home.pug"), params);
 });
 
 app.listen(port, () => {
-  
   console.log(`Server running at http://${hostname}:${port}/`);
 });
