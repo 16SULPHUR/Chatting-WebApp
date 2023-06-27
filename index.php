@@ -6,11 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Byte Talk</title>
     <link rel="stylesheet" href="styles/style.css">
-
-    <!-- password encription-decription library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"
-        integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
-
+    <link rel="icon" href="resources/logo.png">
 </head>
 
 <body>
