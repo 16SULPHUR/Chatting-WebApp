@@ -1,5 +1,8 @@
 # Chatting-WebApp
 
+
+you have to install xmapp , nodejs.
+
 All the static files like scripts , stylesheets and resources are in "public" folder.
 
 All the html files are in "tamplates" folder.
