@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Byte Talk</title>
-    <link rel="stylesheet" type="text/css" href="/styles/style.css">
+    <link rel="stylesheet" type="text/css" href="/public/styles/style.css">
+
 </head>
 <body>
     <header>
@@ -28,15 +29,8 @@
 
 
     <main>
-        <div class="main-div">
-            <h2>Login to start chatting with your friends.</h2><br>
-            This is a chatting app that has been created to help people connect with each other no matter where they
-            are.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste tenetur voluptatum error exercitationem
-            doloribus vero, ipsa, veritatis quis sapiente assumenda corporis quos. Maxime animi facilis fugit est
-            voluptatum sequi porro nihil odit, vero ipsum, officiis similique. Excepturi praesentium commodi rerum
-            suscipit asperiores? Praesentium maxime omnis, voluptatum totam repellat ipsa dolor!
-        </div>
+        
+        
 
         <!-- Log-in form -->
         <div class="main-div">
@@ -53,30 +47,31 @@
 
             </form>
         </div>
-        <div class="signup main-div">
+        <!-- <div class="signup main-div">
     
-        </div>
+        </div> -->
         
         <!-- Sign-up form -->
         <div class="main-div">
             <h1>Sign up</h1>
             <form action="./home.pug" method="post" name="signup">
-                <input type="hidden" name="formType" value="signup">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" placeholder="email"> <br>
+                <input type="hidden" name="formType" class="input" value="signup">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email"  class="input" placeholder="email"> <br>
             
-                <label for="username">Email</label>
-                <input type="text" name="username" id="username" placeholder="username"> <br>
+                <label for="username">User Name:</label>
+                <input type="text" name="username" id="username"   class="input" placeholder="username"> <br>
             
-                <label for="password">Email</label>
-                <input type="password" name="password" id="password" placeholder="password"> <br>
-            
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password "   class="input" placeholder="password"> <br>
+                
+                <input type="submit" value="Register" class="btn submit">
             
             </form>
         </div>
-        <div class="signup main-div">
+        <!-- <div class="signup main-div">
     
-        </div>
+        </div> -->
     </main>
     <footer>
         Byte Talk chatting app. Created to connect people.

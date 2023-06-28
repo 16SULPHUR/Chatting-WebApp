@@ -74,22 +74,17 @@ main{
     gap: 5rem;
 }
 .main-div{
-    height: 72vh;
+    height: 65vh;
     width: 40vw;
     background-color: #ffffff;
     border-radius: 2rem;
     border: 3px solid   rgb(71, 71, 71);;
     padding: 2rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin: 48px;
 }
 
-#sec-logo{
-    height: 400px;
-    width: 400px;
-    margin-left: 48px;
-    
-    
-}
+
 .info{
     position: absolute;
     top: 12.5vh;
@@ -103,6 +98,7 @@ h1{
     color: rgb(55, 182, 251);
     padding: 10px;
     font-family: 'Belanosima', sans-serif;
+    margin: 25px;
 }
 .login{
     position: absolute;
@@ -110,6 +106,7 @@ h1{
     right: 5vw;
     display: grid;
     place-items: center;
+    
     
 }
 .input{
@@ -126,10 +123,13 @@ form{
     height: 90%;
     width: 50%;
     font-family: 'Belanosima', sans-serif;
+    margin: 25px;
+    margin-left: 125px;
   
 }
 h1{
     top: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 label{
     height: 10%;
@@ -141,30 +141,24 @@ input{
     width: 100%;
     margin-bottom: 15px;
 }
-.signup{
-    position: absolute;
-    top: 12.5vh;
-    right: 5vw;
-    background-color: #a5171700;
-    height: 72vh;
-    z-index: -1;
-}
+
 .submit{
     margin-top:25px ;
     margin-left: 80px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(55, 182, 251);
     border: 2px solid rgb(0, 0, 0);
     border-radius: 10px;
-    color: #000000;
+    color: #ffffff;
     font-family: 'Belanosima', sans-serif;
     font-size: 20px;
    
 }
 .submit:hover{
-    border: 2px solid black;
+    border: 2px solid rgb(0, 0, 0);
     border-radius: 10px;
-    background-color: black;
-    color: #ffffff;
+    background-color: rgb(55, 251, 124);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
 }
 .btn{
     height: 35px;
