@@ -81,21 +81,19 @@ app.post("/home.pug", (req, res) => {
     });
 
     // Getting all details of friend
-    const query = `SELECT * FROM \`user information\` WHERE username = '${f_username}';`;
-    const f_details = mainConn.query(query, function (err, result) {
+    const query1 = `SELECT * FROM \`user information\` WHERE username = '${f_username}';`;
+    mainConn.query(query1, function (err, result) {
       if (err) throw err;
-      console.log(result[0].username);
-      return;
-    });
-    console.log(f_details);
+      console.log(result[0]);
+      var details = result[0];
 
-    // const query = `INSERT INTO \`friends\` (\`f-id\`, \`f-email\`, \`f-username\`) VALUES ('1', 'abc@gmail.com', 'An');`;
-    // mainConn.query(query, function (err, result) {
-    //   if (err) throw err;
-    //   console.log(result[0].username);
-    //   const username = result[0].username;
-    //   res.redirect(`/home.pug?username=${username}`);
-    // });
+      const query2 = `INSERT INTO \`friends\` (\`f-id\`, \`f-email\`, \`f-username\`) VALUES ('${details.id}', '${details.email}', '${details.username}');`;
+      userConn.query(query2, function (err, result) {
+        if (err) throw err;
+        console.log("updated friendlist");
+        res.redirect(`/home.pug?username=${username}`);
+      });
+    });
   }
 });
 
