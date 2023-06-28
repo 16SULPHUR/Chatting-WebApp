@@ -6,9 +6,22 @@
     <title>ByteTalk - #{username}</title>
 </head>
 <body>
-    <p>#{email}</p>
+    <!-- <p>#{email}</p>
     <p>#{password}</p>
-    <p>#{username}</p>
+    <p>#{username}</p> -->
     
+    <!-- Form for adding friend -->
+    <h2>Add Friend</h2>
+    <form action="./home.pug" method="post">
+        <input type="hidden" name="formType" value="addFriend">
+        <input type="hidden" name="username" value=#{username}>
+
+        <label for="">username</label>
+        <input type="text" name="f-username">
+
+        <button type="submit">Add</button>
+
+
+    </form>
 </body>
 </html>
