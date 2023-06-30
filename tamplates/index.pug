@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css">
 
 </head>
+
 <body>
     <header>
         <nav>
@@ -29,21 +31,20 @@
 
 
     <main>
-        
-        
 
+
+        <p>#{message}</p>
         <!-- Log-in form -->
         <div class="main-div">
             <h1>patil</h1>
             <form action="./home.pug" method="post" id="loginForm">
                 <input type="hidden" name="formType" value="login">
-                
+
                 <label for="login" class="login-username label">username:</label><br>
                 <input type="text" id="email" class="login-email input" name="username" placeholder="username"><br>
-    
+
                 <label for="password" class="login-password-label label">Password:</label><br>
-                <input type="password" name="password" id="password" class="login-password input" placeholder="Password">
-    
+                <input type="password" name="password" id="password" class="login-password input" placeholder="Password"><br>
                 <input type="submit" value="Submit" class="btn submit"><br>
 
             </form>
@@ -51,7 +52,7 @@
         <!-- <div class="signup main-div">
     
         </div> -->
-        
+
         <!-- Sign-up form -->
         <div class="main-div">
             <h1>Sign up</h1>
@@ -59,20 +60,20 @@
                 <input type="hidden" name="formType" class="input" value="signup">
 
                 <label for="email">Email:</label>
-                <input type="email" name="email" id="email"  class="input" placeholder="example@xyz.com "> <br>
+                <input type="email" name="email" id="email" class="input" placeholder="example@xyz.com "> <br>
 
                 <label for="username">User Name:</label>
-                <input type="text" name="username" id="username"   class="input" placeholder="username"> <br>
+                <input type="text" name="username" id="username" class="input" placeholder="username"> <br>
 
-            
-              
-            
+
+
+
                 <!-- <label for="password">Phone No:</label>
                 <input type="password" name="password" id="password" class="input" placeholder="+91 00000 00000"> <br> -->
 
                 <label for="password">Set Password:</label>
                 <input type="password" name="password" id="password" class="input" placeholder="Password"> <br>
-            
+
                 <input type="submit" value="Register" class="btn submit"><br>
             </form>
         </div>
@@ -84,4 +85,5 @@
         Byte Talk chatting app. Created to connect people.
     </footer>
 </body>
+
 </html>
