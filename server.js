@@ -41,13 +41,15 @@ app.post("/home.pug", (req, res) => {
       const username = result[0].username;
       res.redirect(`/home.pug?username=${username}`);
     });
-  } else if (req.body.formType == "signup") {
+  }
+  // Handling signup form
+  else if (req.body.formType == "signup") {
     let email = req.body.email;
     let password = req.body.password;
     let username = req.body.username;
 
-    const params = { email: email, password: password, username: username };
-    res.render(path.join(__dirname, "./tamplates/home.pug"), params);
+    // const params = { email: email, password: password, username: username };
+    res.redirect(`/home.pug?username=${username}`);
 
     // SQL to add user in table
     const query1 =
@@ -64,9 +66,29 @@ app.post("/home.pug", (req, res) => {
       if (err) throw err;
       console.log(`Created new database BT_${username}`);
     });
-  } else if (req.body.formType == "addFriend") {
+
+    // connecting to user's database
+    var userConn = mysql.createConnection({
+      host: "localhost",
+      user: "root",
+      password: "",
+      database: `bt_${username}`,
+    });
+    userConn.connect(function (err) {
+      if (err) throw err;
+      console.log(`Connected to the bt_${username} Database!`);
+    });
+
+    const query3 = `CREATE TABLE \`BT_${username}\`.\`friends\` (\`f-id\` INT NOT NULL , \`f-email\` TEXT NOT NULL , \`f-username\` VARCHAR(20) NOT NULL , PRIMARY KEY (\`f-id\`), UNIQUE \`f-email\` (\`f-email\`), UNIQUE \`f-username\` (\`f-username\`)) ENGINE = InnoDB;`;
+    userConn.query(query3, function (err, result) {
+      if (err) throw err;
+      console.log("added friendlist");
+    });
+  }
+  // Handling addFriend form
+  else if (req.body.formType == "addFriend") {
     const username = req.body.username;
-    const f_username = req.body.username;
+    const f_username = req.body.fUsername;
 
     // connecting to user's database
     var userConn = mysql.createConnection({
@@ -84,7 +106,7 @@ app.post("/home.pug", (req, res) => {
     const query1 = `SELECT * FROM \`user information\` WHERE username = '${f_username}';`;
     mainConn.query(query1, function (err, result) {
       if (err) throw err;
-      console.log(result[0]);
+      console.log("user info result : " + result[0]);
       var details = result[0];
 
       const query2 = `INSERT INTO \`friends\` (\`f-id\`, \`f-email\`, \`f-username\`) VALUES ('${details.id}', '${details.email}', '${details.username}');`;
@@ -93,7 +115,17 @@ app.post("/home.pug", (req, res) => {
         console.log("updated friendlist");
         res.redirect(`/home.pug?username=${username}`);
       });
+
+      // creating table for new chat with added friend
+      const query3 = `CREATE TABLE \`bt_${username}\`.\`chat_with_bt_${f_username}\` (\`sentBy\` TEXT NOT NULL , \`dateTime\` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , \`message\` TEXT NOT NULL ) ENGINE = InnoDB;`;
+      userConn.query(query3, function (err, result) {
+        if (err) throw err;
+        console.log("created chat with bt_" + f_username);
+        res.redirect(`/home.pug?username=${username}`);
+      });
     });
+
+    
   }
 });
 
