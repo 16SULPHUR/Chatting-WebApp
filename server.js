@@ -75,9 +75,9 @@ app.post("/home.pug", (req, res) => {
     const query4 = `SELECT username , email FROM \`user information\` WHERE username = '${username}' OR email = '${email}'`;
     mainConn.query(query4, function (err, result) {
       if (err) throw err;
-      console.log(result);
+      console.log(result[0]);
 
-      if (result != []) {
+      if (result[0] != undefined) {
         console.log("Duplicate entry");
         // Store the error message in session variable
         req.session.error = "Username or email already exists";
@@ -99,26 +99,28 @@ app.post("/home.pug", (req, res) => {
           mainConn.query(query2, function (err, result) {
             if (err) throw err;
             console.log(`Created new database BT_${username}`);
+
+            // connecting to user's database
+            var userConn = mysql.createConnection({
+              host: "localhost",
+              user: "root",
+              password: "",
+              database: `bt_${username}`,
+            });
+            userConn.connect(function (err) {
+              if (err) throw err;
+              console.log(`Connected to the bt_${username} Database!`);
+            });
+
+            const query3 = `CREATE TABLE \`BT_${username}\`.\`friends\` (\`f-id\` INT NOT NULL , \`f-email\` TEXT NOT NULL , \`f-username\` VARCHAR(20) NOT NULL , PRIMARY KEY (\`f-id\`), UNIQUE \`f-email\` (\`f-email\`), UNIQUE \`f-username\` (\`f-username\`)) ENGINE = InnoDB;`;
+            userConn.query(query3, function (err, result) {
+              if (err) throw err;
+              console.log("added friendlist");
+            });
           });
         });
 
-        // connecting to user's database
-        var userConn = mysql.createConnection({
-          host: "localhost",
-          user: "root",
-          password: "",
-          database: `bt_${username}`,
-        });
-        userConn.connect(function (err) {
-          if (err) throw err;
-          console.log(`Connected to the bt_${username} Database!`);
-        });
-
-        const query3 = `CREATE TABLE \`BT_${username}\`.\`friends\` (\`f-id\` INT NOT NULL , \`f-email\` TEXT NOT NULL , \`f-username\` VARCHAR(20) NOT NULL , PRIMARY KEY (\`f-id\`), UNIQUE \`f-email\` (\`f-email\`), UNIQUE \`f-username\` (\`f-username\`)) ENGINE = InnoDB;`;
-        userConn.query(query3, function (err, result) {
-          if (err) throw err;
-          console.log("added friendlist");
-        });
+        
       }
     });
   }
