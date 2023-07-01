@@ -138,8 +138,8 @@ h1 {
     background-color: rgba(219, 239, 255, 0.552);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-
-form {
+form{
+    /* border: 2px solid black; */
     height: 90%;
     width: 50%;
     font-family: 'Belanosima', sans-serif;
