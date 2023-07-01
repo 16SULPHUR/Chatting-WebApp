@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+// <<<<<<< HEAD
 
 
 let sentMessag1=document.getElementById("sent-message1")
@@ -151,10 +151,10 @@ userCard5.addEventListener("click",()=>{
     userChat4.style.right="-2000px";
     userChat1.style.right="-2000px";
 })
-=======
+// =======
 const err = document.getElementById("err");
 err.style.display = "none";
 if (err.innerHTML != "" ) {
   alert(err.innerHTML);
 }
->>>>>>> ec80aa3839a07b95b6f0765d6fd61158e82f015d
+// >>>>>>> ec80aa3839a07b95b6f0765d6fd61158e82f015d
