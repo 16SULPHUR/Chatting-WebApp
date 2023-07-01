@@ -46,12 +46,12 @@ app.get("/", (req, res) => {
   } else {
     res.render(path.join(__dirname, "./tamplates/index.pug"));
   }
-
-  
 });
 
 app.post("/home.pug", (req, res) => {
   console.log(req.body);
+
+  // Handling login form
   if (req.body.formType == "login") {
     const username = req.body.username;
     const password = req.body.password;
@@ -119,8 +119,6 @@ app.post("/home.pug", (req, res) => {
             });
           });
         });
-
-        
       }
     });
   }
@@ -156,14 +154,17 @@ app.post("/home.pug", (req, res) => {
             res.redirect(`/home.pug?username=${username}`); // Redirect to the error page
           } else {
             console.log("friendlist updated");
-            res.redirect(`/home.pug?username=${username}`);
+            // res.redirect(`/home.pug?username=${username}`);
 
             // creating table for new chat with added friend
             const query3 = `CREATE TABLE \`bt_${username}\`.\`chat_with_bt_${f_username}\` (\`sentBy\` TEXT NOT NULL , \`dateTime\` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , \`message\` TEXT NOT NULL ) ENGINE = InnoDB;`;
             userConn.query(query3, function (err, result) {
-              if (err) throw err;
-              console.log("created chat with bt_" + f_username);
-              res.redirect(`/home.pug?username=${username}`);
+              if (err) {
+                console.log("error while creating chat table")
+              } else {
+                console.log("created chat with bt_" + f_username);
+                res.redirect(`/home.pug?username=${username}`);
+              }
             });
           }
         });

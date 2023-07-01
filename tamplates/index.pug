@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Byte Talk</title>
     <link rel="stylesheet" type="text/css" href="styles/style.css">
+    
 
 </head>
 
@@ -29,29 +30,29 @@
         </nav>
     </header>
 
+    <p id="err">#{message}</p>
 
     <main>
 
 
-        <p>#{message}</p>
+        
+        
         <!-- Log-in form -->
         <div class="main-div">
             <h1>patil</h1>
             <form action="./home.pug" method="post" id="loginForm">
                 <input type="hidden" name="formType" value="login">
+                
+                <!-- <input type="text" id="errMsg" value=#{message}> -->
 
                 <label for="login" class="login-username label">username:</label><br>
                 <input type="text" id="email" class="login-email input" name="username" placeholder="username"><br>
-
                 <label for="password" class="login-password-label label">Password:</label><br>
                 <input type="password" name="password" id="password" class="login-password input" placeholder="Password"><br>
                 <input type="submit" value="Submit" class="btn submit"><br>
 
             </form>
         </div>
-        <!-- <div class="signup main-div">
-    
-        </div> -->
 
         <!-- Sign-up form -->
         <div class="main-div">
@@ -77,13 +78,11 @@
                 <input type="submit" value="Register" class="btn submit"><br>
             </form>
         </div>
-        <!-- <div class="signup main-div">
-    
-        </div> -->
     </main>
     <footer>
         Byte Talk chatting app. Created to connect people.
     </footer>
+    <script src="scripts/script.js"></script>
 </body>
 
 </html>
