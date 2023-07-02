@@ -1,13 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Byte Talk</title>
+<<<<<<< HEAD:tamplates/index.html
     <link rel="stylesheet" type="text/css" href="/public/styles/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Belanosima&family=Poppins:wght@200&display=swap" rel="stylesheet"> 
+=======
+<<<<<<< HEAD:tamplates/index.html
+    <link rel="stylesheet" type="text/css" href="\public\styles\style.css">
+=======
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    
+>>>>>>> ec80aa3839a07b95b6f0765d6fd61158e82f015d:tamplates/index.pug
+>>>>>>> 855655b98367f55e7c826eb452e6275c9a93f2b6:tamplates/index.pug
 
 </head>
+
 <body>
     <header>
         <nav>
@@ -28,31 +39,38 @@
         </nav>
     </header>
 
+    <p id="err">#{message}</p>
 
     <main>
-        
-        
+<<<<<<< HEAD:tamplates/index.html
+            <!-- Log-in form -->
+=======
 
+
+        
+        
         <!-- Log-in form -->
+>>>>>>> ec80aa3839a07b95b6f0765d6fd61158e82f015d:tamplates/index.pug
         <div class="main-div">
             <h1>patil</h1>
             <form action="./home.pug" method="post" id="loginForm">
                 <input type="hidden" name="formType" value="login">
                 
+                <!-- <input type="text" id="errMsg" value=#{message}> -->
+
                 <label for="login" class="login-username label">username:</label><br>
                 <input type="text" id="email" class="login-email input" name="username" placeholder="username"><br>
-    
                 <label for="password" class="login-password-label label">Password:</label><br>
-                <input type="password" name="password" id="password" class="login-password input" placeholder="Password">
-    
+                <input type="password" name="password" id="password" class="login-password input" placeholder="Password"><br>
                 <input type="submit" value="Submit" class="btn submit"><br>
 
             </form>
         </div>
-        <!-- <div class="signup main-div">
-    
-        </div> -->
+<<<<<<< HEAD:tamplates/index.html
         
+=======
+
+>>>>>>> ec80aa3839a07b95b6f0765d6fd61158e82f015d:tamplates/index.pug
         <!-- Sign-up form -->
         <div class="main-div">
             <h1>Sign up</h1>
@@ -60,29 +78,28 @@
                 <input type="hidden" name="formType" class="input" value="signup">
 
                 <label for="email">Email:</label>
-                <input type="email" name="email" id="email"  class="input" placeholder="example@xyz.com "> <br>
+                <input type="email" name="email" id="email" class="input" placeholder="example@xyz.com "> <br>
 
                 <label for="username">User Name:</label>
-                <input type="text" name="username" id="username"   class="input" placeholder="username"> <br>
+                <input type="text" name="username" id="username" class="input" placeholder="username"> <br>
 
-            
-              
-            
+
+
+
                 <!-- <label for="password">Phone No:</label>
                 <input type="password" name="password" id="password" class="input" placeholder="+91 00000 00000"> <br> -->
 
                 <label for="password">Set Password:</label>
                 <input type="password" name="password" id="password" class="input" placeholder="Password"> <br>
-            
+
                 <input type="submit" value="Register" class="btn submit"><br>
             </form>
         </div>
-        <!-- <div class="signup main-div">
-    
-        </div> -->
     </main>
     <footer>
         Byte Talk chatting app. Created to connect people.
     </footer>
+    <script src="scripts/script.js"></script>
 </body>
+
 </html>

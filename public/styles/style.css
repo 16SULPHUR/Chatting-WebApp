@@ -1,40 +1,51 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 body{
     background-image: url("../resources/background-2.jpg");
+=======
+body {
+    background-image: url("../resources/background.jpg");
+>>>>>>> 855655b98367f55e7c826eb452e6275c9a93f2b6
     background-size: cover;
 }
-a{
+
+a {
     text-decoration: none;
     color: black;
-    
+
 }
-a:hover{
+
+a:hover {
     color: white;
     text-decoration: solid;
 }
-header{
+
+header {
     height: 10vh;
     width: 100vw;
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    
-  
+
+
 }
-nav{
+
+nav {
     display: flex;
 }
-.logo{
+
+.logo {
     width: 70vw;
     height: 100%;
     padding-left: 1.5rem;
 }
-.img{
+
+.img {
     position: absolute;
     top: -40px;
     height: 20vh;
@@ -44,7 +55,8 @@ nav{
     background-repeat: no-repeat;
 
 }
-.customer-services{
+
+.customer-services {
     float: right;
     width: 30vw;
     height: 100%;
@@ -58,40 +70,47 @@ nav{
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     /* gap: space-evenly; */
 }
-.customer-services div{
+
+.customer-services div {
     height: 5vh;
     width: 10vw;
     padding: 1.5rem;
 }
-.customer-services div:hover{
-    color:rgb(55, 182, 251);
-  
+
+.customer-services div:hover {
+    color: rgb(55, 182, 251);
+
 }
-main{
+
+main {
     height: 80vh;
     width: 100vw;
     display: flex;
     gap: 5rem;
+    overflow: hidden;
 }
-.main-div{
+
+.main-div {
     height: 70vh;
     width: 40vw;
     background-color: #ffffff;
     border-radius: 2rem;
-    border: 3px solid   rgb(71, 71, 71);;
+    border: 3px solid rgb(71, 71, 71);
+    ;
     padding: 2rem;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     margin: 48px;
 }
 
 
-.info{
+.info {
     position: absolute;
     top: 12.5vh;
     left: 5vw;
     font-family: 'Belanosima', sans-serif;
 }
-h1{
+
+h1 {
     background-color: #ffffff;
     border: 2px solid black;
     border-radius: 16px;
@@ -99,27 +118,29 @@ h1{
     padding: 10px;
     font-family: 'Belanosima', sans-serif;
     margin: 25px;
+    text-align: center;
 }
-.login{
+
+.login {
     position: absolute;
     top: 12.5vh;
     right: 5vw;
     display: grid;
     place-items: center;
-    
-    
+
+
 }
-.input{
+
+.input {
     border: 2px solid black;
     background-color: rgba(197, 197, 197, 0.552);
     border-radius: 10px;
     padding: 14px;
     transition: all .5s;
 }
-.input:hover{
+
+.input:hover {
     background-color: rgba(219, 239, 255, 0.552);
-    width: 120%;
-    height:10%;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 form{
@@ -129,25 +150,28 @@ form{
     font-family: 'Belanosima', sans-serif;
     margin: 25px;
     margin-left: 125px;
-  
+
 }
-h1{
+
+h1 {
     top: 20px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-label{
+
+label {
     height: 10%;
     width: 100%;
     font-size: large;
 }
-input{
+
+input {
     height: 1.5rem;
     width: 100%;
     margin-bottom: 15px;
 }
 
-.submit{
-    margin-top:25px ;
+.submit {
+    margin-top: 25px;
     margin-left: 80px;
     background-color: rgb(55, 182, 251);
     border: 2px solid rgb(255, 255, 255);
@@ -157,9 +181,10 @@ input{
     font-size: 20px;
     transition: all .5s;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-   
+
 }
-.submit:hover{
+
+.submit:hover {
     border: 2px solid rgb(255, 255, 255);
     border-radius: 10px;
     background-color: rgb(55, 251, 124);
@@ -168,16 +193,25 @@ input{
     height: 45px;
     width: 110px;
 }
-.btn{
+
+.btn {
     height: 45px;
     width: 110px;
     padding: 4px;
 }
+<<<<<<< HEAD
 footer{
     height: 5vh;
     margin-top: 5vh;
     width: 100vw;
     background-color:rgb(55, 182, 251,0.55);
+=======
+
+footer {
+    height: 10vh;
+    width: 100vw;
+    background-color: rgb(55, 182, 251);
+>>>>>>> 855655b98367f55e7c826eb452e6275c9a93f2b6
     color: rgb(0, 0, 0);
     display: grid;
     place-items: center;
@@ -185,22 +219,25 @@ footer{
     font-family: 'Belanosima', sans-serif;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.signup-slide{
+
+.signup-slide {
     position: absolute;
     top: 12.5vh;
     left: 5vw;
     z-index: 10;
     background-color: #a51717;
 }
-.info-slide{
+
+.info-slide {
     position: absolute;
     top: 12.5vh;
     right: 5vw;
     z-index: 10;
 
 }
-#signup-btn{
+
+#signup-btn {
     margin: 3px;
     text-decoration: underline;
-    color:rgb(55, 182, 251);
+    color: rgb(55, 182, 251);
 }
