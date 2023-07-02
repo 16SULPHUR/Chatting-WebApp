@@ -5,7 +5,7 @@
 }
 
 body{
-    background-image: url("../resources/background.jpg");
+    background-image: url("../resources/background-2.jpg");
     background-size: cover;
 }
 a{
@@ -174,9 +174,10 @@ input{
     padding: 4px;
 }
 footer{
-    height: 10vh;
+    height: 5vh;
+    margin-top: 5vh;
     width: 100vw;
-    background-color:rgb(55, 182, 251);
+    background-color:rgb(55, 182, 251,0.55);
     color: rgb(0, 0, 0);
     display: grid;
     place-items: center;
