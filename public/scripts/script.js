@@ -1,5 +1,3 @@
-// <<<<<<< HEAD
-
 let sentMessag1 = document.getElementById("sent-message1");
 let chattingContent1 = document.getElementById("chatting-content1");
 let sendButton = () => {
@@ -144,10 +142,8 @@ userCard5.addEventListener("click", () => {
   userChat4.style.right = "-2000px";
   userChat1.style.right = "-2000px";
 });
-// =======
 const err = document.getElementById("err");
 err.style.display = "none";
 if (err.innerHTML != "") {
   alert(err.innerHTML);
 }
-// >>>>>>> ec80aa3839a07b95b6f0765d6fd61158e82f015d

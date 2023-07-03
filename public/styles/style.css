@@ -4,13 +4,9 @@
     box-sizing: border-box;
 }
 
-<<<<<<< HEAD
-body{
-    background-image: url("../resources/background-2.jpg");
-=======
+
 body {
     background-image: url("../resources/background.jpg");
->>>>>>> 855655b98367f55e7c826eb452e6275c9a93f2b6
     background-size: cover;
 }
 
@@ -143,7 +139,8 @@ h1 {
     background-color: rgba(219, 239, 255, 0.552);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-form{
+
+form {
     /* border: 2px solid black; */
     height: 90%;
     width: 50%;
@@ -199,19 +196,18 @@ input {
     width: 110px;
     padding: 4px;
 }
-<<<<<<< HEAD
-footer{
+
+footer {
     height: 5vh;
     margin-top: 5vh;
     width: 100vw;
-    background-color:rgb(55, 182, 251,0.55);
-=======
+    background-color: rgb(55, 182, 251, 0.55);
+}
 
 footer {
     height: 10vh;
     width: 100vw;
     background-color: rgb(55, 182, 251);
->>>>>>> 855655b98367f55e7c826eb452e6275c9a93f2b6
     color: rgb(0, 0, 0);
     display: grid;
     place-items: center;
