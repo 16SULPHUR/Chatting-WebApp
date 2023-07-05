@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Byte Talk - #{username}</title>
     <!-- <link rel="stylesheet" href="\public\styles\style.css" />
     <link rel="stylesheet" href="\public\styles\chat-home.css" /> -->
     <link rel="stylesheet" href="styles\style.css" />
@@ -24,21 +24,27 @@
     </header>
     <main>
       <div class="containor">
+        <input type="hidden" name="errMsg" id="errMsg" value = '#{message}'>
         <div class="user">
           <div class="user-img">
             <!-- <img src="\public\resources\no-dp.png" alt="" /> -->
             <img src="resources\no-dp.png" alt="" />
           </div>
-          Username <br />
+          <span>#{username}</span>
+           <br>
           <p>Active</p>
           <button value="Logout">Logout</button>
         </div>
         <div class="wrapper">
-          <input type="text" placeholder="Enter name of the user." />
-          <button>
-            <!-- <img src="\public\resources\search-outline.svg" alt="Search icon" /> -->
-            <img src="resources\search-outline.svg" alt="Search icon" />
-          </button>
+          <form action="./home.pug" method="post">
+            <input type="hidden" name="formType" value="addFriend">
+            <input type="hidden" name="username" value=#{username}>
+            <input type="text" name="fUsername" placeholder="Enter name of the user." />
+            <button type="submit">
+              <!-- <img src="\public\resources\search-outline.svg" alt="Search icon" /> -->
+              <img src="resources\search-outline.svg" alt="Search icon" />
+            </button>
+          </form>
           <div class="card" id="card1">
             <div class="chat-user-img">
               <!-- <img src="\public\resources\no-dp.png" alt="" /> -->
