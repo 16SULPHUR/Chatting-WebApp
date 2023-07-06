@@ -4,6 +4,8 @@ if (errMsg.value) {
   alert(errMsg.value);
 }
 
+console.log(document.getElementById("friendList").value)
+
 let sentMessag1 = document.getElementById("sent-message1");
 let chattingContent1 = document.getElementById("chatting-content1");
 let sendButton = () => {

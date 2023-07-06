@@ -34,6 +34,10 @@ mainConn.connect(function (err) {
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded());
 
+app.get("/home2.pug", (req, res) => {
+  res.render(path.join(__dirname, "./tamplates/home2.pug"));
+})
+
 app.get("/", (req, res) => {
   if (req.session.error) {
     const errorMessage = req.session.error;
@@ -61,7 +65,33 @@ app.post("/home.pug", (req, res) => {
       if (err) throw err;
       console.log(result[0].username);
       const username = result[0].username;
-      res.redirect(`/home.pug?username=${username}`);
+      const friendList = [];
+
+      // connecting to user's database
+      var userConn = mysql.createConnection({
+        host: "localhost",
+        user: "root",
+        password: "",
+        database: `bt_${username}`,
+      });
+      // Getting friend list of user
+      const query1 = `select \`f-username\` FROM \`friends\`;`;
+
+       userConn.query(query1, function (err, result) {
+        if (err) {
+          console.log("error while fetching friends");
+        } else {
+          for (var row of result) {
+            friendList.push(row['f-username']);
+          }
+          console.log("FriendList", friendList)
+        }
+      });
+
+      res.render(path.join(__dirname, "./tamplates/home.pug"), {
+        username: username,
+        "friendList": friendList,
+      });
     });
   }
 
@@ -84,7 +114,9 @@ app.post("/home.pug", (req, res) => {
         res.redirect(`/`); // Redirect to the error page
       } else {
         // const params = { email: email, password: password, username: username };
-        res.redirect(`/home.pug?username=${username}`);
+        res.render(path.join(__dirname, "./tamplates/home.pug"), {
+          username: username,
+        });
 
         // SQL to add user in table
         const query1 =
@@ -115,7 +147,7 @@ app.post("/home.pug", (req, res) => {
             const query3 = `CREATE TABLE \`BT_${username}\`.\`friends\` (\`f-id\` INT NOT NULL , \`f-email\` TEXT NOT NULL , \`f-username\` VARCHAR(20) NOT NULL , PRIMARY KEY (\`f-id\`), UNIQUE \`f-email\` (\`f-email\`), UNIQUE \`f-username\` (\`f-username\`)) ENGINE = InnoDB;`;
             userConn.query(query3, function (err, result) {
               if (err) throw err;
-              console.log("added friendlist");
+              console.log("friendlist created");
             });
           });
         });
@@ -129,8 +161,11 @@ app.post("/home.pug", (req, res) => {
     const f_username = req.body.fUsername;
 
     if (username == f_username) {
-      req.session.error = "EE VEDYA.....";
-      res.redirect(`/home.pug?username=${username}`); // Redirect to the error page
+      req.session.error = "You can not add yourself as a friend";
+      res.render(path.join(__dirname, "./tamplates/home.pug"), {
+        username: username,
+        message: req.session.error,
+      }); // Redirect to the error page
     } else {
       // connecting to user's and friend's database
       var userConn = mysql.createConnection({
@@ -168,7 +203,7 @@ app.post("/home.pug", (req, res) => {
                 if (err) {
                   // Store the error message in session variable
                   req.session.error = "Friend already added";
-                  // res.redirect(`/home.pug?username=${username}`); // Redirect to the error page
+                  // res.render(path.join(__dirname, "./tamplates/home.pug"), { "username": username, }); // Redirect to the error page
                 } else {
                   console.log("friend's friendlist updated");
 
@@ -179,7 +214,7 @@ app.post("/home.pug", (req, res) => {
                       console.log("error while creating chat table");
                     } else {
                       console.log("created chat with bt_" + username);
-                      // res.redirect(`/home.pug?username=${username}`);
+                      // res.render(path.join(__dirname, "./tamplates/index.pug"), { "username": username, });
                     }
                   });
                 }
@@ -203,10 +238,13 @@ app.post("/home.pug", (req, res) => {
             if (err) {
               // Store the error message in session variable
               req.session.error = "Friend already added";
-              res.redirect(`/home.pug?username=${username}`); // Redirect to the error page
+              res.render(path.join(__dirname, "./tamplates/home.pug"), {
+                username: username,
+                message: req.session.error,
+              }); // Redirect to the error page
             } else {
               console.log("user's friendlist updated");
-              // res.redirect(`/home.pug?username=${username}`);
+              // res.render(path.join(__dirname, "./tamplates/index.pug"), { "username": username, });
 
               // creating table for new chat with added friend
               const query3 = `CREATE TABLE \`bt_${username}\`.\`chat_with_bt_${f_username}\` (\`sentBy\` TEXT NOT NULL , \`dateTime\` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP , \`message\` TEXT NOT NULL ) ENGINE = InnoDB;`;
@@ -215,7 +253,10 @@ app.post("/home.pug", (req, res) => {
                   console.log("error while creating chat table");
                 } else {
                   console.log("created chat with bt_" + f_username);
-                  res.redirect(`/home.pug?username=${username}`);
+                  res.render(path.join(__dirname, "./tamplates/home.pug"), {
+                    username: username,
+                    result: result,
+                  });
                 }
               });
             }
