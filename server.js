@@ -4,6 +4,9 @@ const path = require("path");
 // const fs = require("fs");
 const session = require("express-session");
 var mysql = require("mysql");
+const loginHandler = require("./serverPartials/loginHandler");
+const connectDB = require("./serverPartials/connectDB");
+var friendList = [];
 
 const app = express();
 const hostname = "127.0.0.1";
@@ -18,25 +21,23 @@ app.use(
   })
 );
 
-// Connecting to the database
-var mainConn = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "chatting webapp",
-});
 
-mainConn.connect(function (err) {
-  if (err) throw err;
-  console.log("Connected to the Database!");
-});
+// // Connecting to the database
+// var mainConn = mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "",
+//   database: "chatting webapp",
+// });
+
+// mainConn.connect(function (err) {
+//   if (err) throw err;
+//   console.log("Connected to the Database!");
+// });
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded());
 
-app.get("/home2.pug", (req, res) => {
-  res.render(path.join(__dirname, "./tamplates/home2.pug"));
-})
 
 app.get("/", (req, res) => {
   if (req.session.error) {
@@ -55,48 +56,51 @@ app.get("/", (req, res) => {
 app.post("/home.pug", (req, res) => {
   console.log(req.body);
 
-  // Handling login form
-  if (req.body.formType == "login") {
-    const username = req.body.username;
-    const password = req.body.password;
+  loginHandler(req.body,req,res);
 
-    const query = `SELECT * FROM \`user information\` WHERE username = '${username}';`;
-    mainConn.query(query, function (err, result) {
-      if (err) throw err;
-      console.log(result[0].username);
-      const username = result[0].username;
-      const friendList = [];
+  // // Handling login form
+  // if (req.body.formType == "login") {
+  //   friendList = [];
+  //   const username = req.body.username;
+  //   const password = req.body.password;
 
-      // connecting to user's database
-      var userConn = mysql.createConnection({
-        host: "localhost",
-        user: "root",
-        password: "",
-        database: `bt_${username}`,
-      });
-      // Getting friend list of user
-      const query1 = `select \`f-username\` FROM \`friends\`;`;
+  //   const query = `SELECT * FROM \`user information\` WHERE username = '${username}';`;
+  //   mainConn.query(query, function (err, result) {
+  //     if (err) throw err;
+  //     console.log(result[0].username);
+  //     const username = result[0].username;
 
-       userConn.query(query1, function (err, result) {
-        if (err) {
-          console.log("error while fetching friends");
-        } else {
-          for (var row of result) {
-            friendList.push(row['f-username']);
-          }
-          console.log("FriendList", friendList)
-        }
-      });
+  //     // connecting to user's database
+  //     var userConn = mysql.createConnection({
+  //       host: "localhost",
+  //       user: "root",
+  //       password: "",
+  //       database: `bt_${username}`,
+  //     });
+  //     // Getting friend list of user
+  //     const query1 = `select \`f-username\` FROM \`friends\`;`;
 
-      res.render(path.join(__dirname, "./tamplates/home.pug"), {
-        username: username,
-        "friendList": friendList,
-      });
-    });
-  }
+  //     userConn.query(query1, function (err, result) {
+  //       if (err) {
+  //         console.log("error while fetching friends");
+  //       } else {
+  //         for (var row of result) {
+  //           friendList.push(row["f-username"]);
+  //         }
+  //         console.log("FriendList", friendList);
+
+  //         res.render(path.join(__dirname, "./tamplates/home.pug"), {
+  //           username: username,
+  //           friends: friendList,
+  //         });
+  //       }
+  //     });
+  //   });
+  // }
 
   // Handling signup form
-  else if (req.body.formType == "signup") {
+  // else
+    if(req.body.formType == "signup") {
     let email = req.body.email;
     let password = req.body.password;
     let username = req.body.username;
@@ -113,9 +117,11 @@ app.post("/home.pug", (req, res) => {
         req.session.error = "Username or email already exists";
         res.redirect(`/`); // Redirect to the error page
       } else {
+        console.log("FriendList", friendList);
         // const params = { email: email, password: password, username: username };
         res.render(path.join(__dirname, "./tamplates/home.pug"), {
           username: username,
+          friends: friendList,
         });
 
         // SQL to add user in table
@@ -161,9 +167,11 @@ app.post("/home.pug", (req, res) => {
     const f_username = req.body.fUsername;
 
     if (username == f_username) {
+      console.log("FriendList", friendList);
       req.session.error = "You can not add yourself as a friend";
       res.render(path.join(__dirname, "./tamplates/home.pug"), {
         username: username,
+        friends: friendList,
         message: req.session.error,
       }); // Redirect to the error page
     } else {
@@ -236,10 +244,13 @@ app.post("/home.pug", (req, res) => {
           const query2 = `INSERT INTO \`friends\` (\`f-id\`, \`f-email\`, \`f-username\`) VALUES ('${details.id}', '${details.email}', '${details.username}');`;
           userConn.query(query2, function (err, result) {
             if (err) {
+              console.log("FriendList", friendList);
+
               // Store the error message in session variable
               req.session.error = "Friend already added";
               res.render(path.join(__dirname, "./tamplates/home.pug"), {
                 username: username,
+                friends: friendList,
                 message: req.session.error,
               }); // Redirect to the error page
             } else {
@@ -252,11 +263,36 @@ app.post("/home.pug", (req, res) => {
                 if (err) {
                   console.log("error while creating chat table");
                 } else {
-                  console.log("created chat with bt_" + f_username);
+                  // console.log("FriendList", friendList);
+                  // res.render(path.join(__dirname, "./tamplates/home.pug"), {
+                  //   username: username,
+                  //   friends: friendList,
+                  // });
+                }
+              });
+
+              
+              console.log("created chat with bt_" + f_username);
+
+              friendList = [];
+              // Getting friend list of user
+              const query7 = `select \`f-username\` FROM \`friends\`;`;
+
+              userConn.query(query7, function (err, result) {
+                if (err) {
+                  console.log("error while fetching friends");
+                } else {
+                  for (var row of result) {
+                    friendList.push(row["f-username"]);
+                  }
+                  
+                  console.log("FriendList", friendList);
                   res.render(path.join(__dirname, "./tamplates/home.pug"), {
                     username: username,
+                    friends: friendList,
                     result: result,
                   });
+                  friendList = [];
                 }
               });
             }

@@ -108,6 +108,7 @@ input{
 }
 .card:hover{
     background-color: #959292;
+    cursor: pointer;
 }
 .info-containor{
     height: 80vh;

@@ -1,13 +1,10 @@
-// Alerting user with error
-const errMsg = document.getElementById("errMsg");
-if (errMsg.value) {
-  alert(errMsg.value);
-}
 
-console.log(document.getElementById("friendList").value)
+
+console.log("script works");
 
 let sentMessag1 = document.getElementById("sent-message1");
 let chattingContent1 = document.getElementById("chatting-content1");
+
 let sendButton = () => {
   let chatInput1 = document.getElementById("chat-input1").value;
   if (chatInput1 != "") {
@@ -24,6 +21,7 @@ let sendButton = () => {
   }
   document.getElementById("chat-input1").value = "";
 };
+
 let sentMessag2 = document.getElementById("sent-message2");
 let chattingContent2 = document.getElementById("chatting-content2");
 let sendButton2 = () => {
@@ -98,60 +96,26 @@ let sendButton5 = () => {
 };
 // This code provides chatting area for selected user.
 
-let userCard1 = document.getElementById("card1");
-let userCard2 = document.getElementById("card2");
-let userCard3 = document.getElementById("card3");
-let userCard4 = document.getElementById("card4");
-let userCard5 = document.getElementById("card5");
+const userCards = document.getElementsByClassName("card");
+const userChats = document.getElementsByClassName("chat-containor");
 
-let userChat1 = document.getElementById("user-chat1");
-let userChat2 = document.getElementById("user-chat2");
-let userChat3 = document.getElementById("user-chat3");
-let userChat4 = document.getElementById("user-chat4");
-let userChat5 = document.getElementById("user-chat5");
+for (let i = 0; i < userCards.length; i++) {
+  userCards[i].addEventListener("click", () => {
+    userChats[i].style.right = "40px";
+    userChats[i].style.width = "65vw";
 
-userCard1.addEventListener("click", () => {
-  userChat1.style.right = "40px";
-  userChat1.style.width = "65vw";
-  userChat2.style.right = "-2000px";
-  userChat3.style.right = "-2000px";
-  userChat4.style.right = "-2000px";
-  userChat5.style.right = "-2000px";
-});
-userCard2.addEventListener("click", () => {
-  userChat2.style.right = "40px";
-  userChat2.style.width = "65vw";
-  userChat1.style.right = "-2000px";
-  userChat3.style.right = "-2000px";
-  userChat4.style.right = "-2000px";
-  userChat5.style.right = "-2000px";
-});
-userCard3.addEventListener("click", () => {
-  userChat3.style.right = "40px";
-  userChat3.style.width = "65vw";
-  userChat2.style.right = "-2000px";
-  userChat1.style.right = "-2000px";
-  userChat4.style.right = "-2000px";
-  userChat5.style.right = "-2000px";
-});
-userCard4.addEventListener("click", () => {
-  userChat4.style.right = "40px";
-  userChat4.style.width = "65vw";
-  userChat2.style.right = "-2000px";
-  userChat3.style.right = "-2000px";
-  userChat1.style.right = "-2000px";
-  userChat5.style.right = "-2000px";
-});
-userCard5.addEventListener("click", () => {
-  userChat5.style.right = "40px";
-  userChat5.style.width = "65vw";
-  userChat2.style.right = "-2000px";
-  userChat3.style.right = "-2000px";
-  userChat4.style.right = "-2000px";
-  userChat1.style.right = "-2000px";
-});
-const err = document.getElementById("err");
-err.style.display = "none";
-if (err.innerHTML != "") {
-  alert(err.innerHTML);
+    for (let j = 0; i < userChats.length; j++) {
+      if (i == j) {
+        continue;
+      } else {
+        userChats[j].style.right = "-2000px";
+      }
+    }
+  });
+}
+
+// Alerting user with error
+const errMsg = document.getElementById("errMsg");
+if (errMsg.value) {
+  alert(errMsg.value);
 }

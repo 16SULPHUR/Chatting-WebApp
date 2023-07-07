@@ -1,242 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Byte Talk - #{username}</title>
-    <!-- <link rel="stylesheet" href="\public\styles\style.css" />
-    <link rel="stylesheet" href="\public\styles\chat-home.css" /> -->
-    <link rel="stylesheet" href="styles\style.css" />
-    <link rel="stylesheet" href="styles\chat-home.css" />
-  </head>
-  <body>
-    <header>
-      <nav>
-        <div class="logo">
-          <div class="img"></div>
-        </div>
-        <div class="customer-services">
-          <div class="help">Help</div>
-          <div class="about-us">About us</div>
-          <div class="contact">Contact</div>
-        </div>
-      </nav>
-    </header>
-    <main>
-      <span>
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  title Byte Talk - #{username}
+  //
+    <link rel="stylesheet" href="\public\styles\style.css" />
+    <link rel="stylesheet" href="\public\styles\chat-home.css" />
+  link(rel='stylesheet' href='styles/style.css')
+  link(rel='stylesheet' href='styles/chat-home.css')
+header
+  nav
+    .logo
+      .img
+    .customer-services
+      .help Help
+      .about-us About us
+      .contact Contact
+main 
 
-      </span>
-      <div class="containor">
-        <input type="hidden" name="errMsg" id="errMsg" value = '#{message}'>
-        <input type="hidden" name="result" id="result" value = '#{result}'>
-        
-        <div class="user">
-          <div class="user-img">
-            <!-- <img src="\public\resources\no-dp.png" alt="" /> -->
-            <img src="resources\no-dp.png" alt="" />
-          </div>
-          <span>#{username}</span>
-           <br>
-          <p>Active</p>
-          <button value="Logout">Logout</button>
-        </div>
-        <div class="wrapper">
-          <form action="./home.pug" method="post">
-            <input type="hidden" name="formType" value="addFriend">
-            <input type="hidden" name="username" value=#{username}>
-            <input type="text" name="fUsername" placeholder="Enter name of the user." />
-            <button type="submit">
-              <!-- <img src="\public\resources\search-outline.svg" alt="Search icon" /> -->
-              <img src="resources\search-outline.svg" alt="Search icon" />
-            </button>
-          </form>
-          <div class="card" id="card1">
-            <div class="chat-user-img">
-              <!-- <img src="\public\resources\no-dp.png" alt="" /> -->
-              <img src="resources\no-dp.png" alt="" />
-            </div>
-            User-1 <br />
-            <p>This is a message from the user.</p>
-          </div>
-          <div class="card" id="card2">
-            <div class="chat-user-img">
-              <!-- <img src="\public\resources\no-dp.png" alt="" /> -->
-              <img src="resources\no-dp.png" alt="" />
-            </div>
-            User-2 <br />
-            <p>This is a message from the user.</p>
-          </div>
-          <div class="card" id="card3">
-            <div class="chat-user-img">
-              <!-- <img src="\public\resources\no-dp.png" alt="" /> -->
-              <img src="resources\no-dp.png" alt="" />
-            </div>
-            User-3 <br />
-            <p>This is a message from the user.</p>
-          </div>
-          <div class="card" id="card4">
-            <div class="chat-user-img">
-              <!-- <img src="\public\resources\no-dp.png" alt="" /> -->
-              <img src="resources\no-dp.png" alt="" />
-            </div>
-            User-4 <br />
-            <p>This is a message from the user.</p>
-          </div>
-          <div class="card" id="card5">
-            <div class="chat-user-img">
-              <!-- <img src="\public\resources\no-dp.png" alt="" /> -->
-              <img src="resources\no-dp.png" alt="" />
-            </div>
-            User-5 <br />
-            <p>This is a message from the user.</p>
-          </div>
-        </div>
-      </div>
+  .containor  
+    input#errMsg(type='hidden' name='errMsg' value=message)
+    input#result(type='hidden' name='result' value=result)
+    .user
+      .user-img
+        // <img src="\public\resources/no-dp.png" alt="" />
+        img(src='resources/no-dp.png' alt='')
+      span= username
+      br
+      p Active
+      button(value='Logout') Logout
+    .wrapper
+      form(action='./home.pug' method='post')
+        input(type='hidden' name='formType' value='addFriend')
+        input(type='hidden' name='username' value = username)
+        input(type='text' name='fUsername' placeholder='Enter name of the user.')
+        button(type='submit')
+          // <img src="\public\resources/search-outline.svg" alt="Search icon" />
+          img(src='resources/search-outline.svg' alt='Search icon')
 
-      <div class="info-containor">
-        <!-- <img src="\public\resources\logo.png" alt="" /> -->
-        <img src="resources\logo.png" alt="" />
-      </div>
 
-      <div class="chat-containor" id="user-chat1">
-        <div class="only-chat-contain">
-          <div class="chat-user-info">
-            <div class="chat-user-img">
-              <!-- <img src="\public\resources\no-dp.png" alt="" /> -->
-              <img src="resources\no-dp.png" alt="" />
-            </div>
-            <div class="user-name">
-              <p class="name">User-1</p>
-              <p class="activity">Active/Inactive</p>
-            </div>
-          </div>
-          <div class="chatting-content" id="chatting-content1">
-            <div class="received-message">This is a received message</div>
-            <div class="sent-message" id="sent-message1">
-              This is a sent message
-            </div>
-          </div>
-        </div>
-        <div class="message-input">
-          <input type="text" placeholder="Enter your messaage." id="chat-input1" />
-          <button id="send-button" onclick="sendButton()">
-            <!-- <img src="\public\resources\send-outline.svg" alt="Send icon" class="svg-img" /> -->
-            <img src="resources\send-outline.svg" alt="Send icon" class="svg-img" />
-          </button>
-        </div>
-      </div>
-      <div class="chat-containor" id="user-chat2">
-        <div class="only-chat-contain">
-          <div class="chat-user-info">
-            <div class="chat-user-img">
-              <!-- <img src="\public\resources\no-dp.png" alt="" /> -->
-              <img src="resources\no-dp.png" alt="" />
-            </div>
-            <div class="user-name">
-              <p class="name">User-2</p>
-              <p class="activity">Active/Inactive</p>
-            </div>
-          </div>
-          <div class="chatting-content" id="chatting-content2">
-            <div class="received-message">This is a received message</div>
-            <div class="sent-message" id="sent-message2">
-              This is a sent message
-            </div>
-          </div>
-        </div>
-        <div class="message-input">
-          <input type="text" placeholder="Enter your messaage." id="chat-input2" />
-          <button id="send-button2" onclick="sendButton2()">
-            <!-- <img src="\public\resources\send-outline.svg" alt="Send icon" class="svg-img" /> -->
-            <img src="resources\send-outline.svg" alt="Send icon" class="svg-img" />
-          </button>
-        </div>
-      </div>
-      <div class="chat-containor" id="user-chat3">
-        <div class="only-chat-contain">
-          <div class="chat-user-info">
-            <div class="chat-user-img">
-              <!-- <img src="\public\resources\no-dp.png" alt="" /> -->
-              <img src="resources\no-dp.png" alt="" />
-            </div>
-            <div class="user-name">
-              <p class="name">User-3</p>
-              <p class="activity">Active/Inactive</p>
-            </div>
-          </div>
-          <div class="chatting-content" id="chatting-content3">
-            <div class="received-message">This is a received message</div>
-            <div class="sent-message" id="sent-message3">
-              This is a sent message
-            </div>
-          </div>
-        </div>
-        <div class="message-input">
-          <input type="text" placeholder="Enter your messaage." id="chat-input3" />
-          <button id="send-button3" onclick="sendButton3()">
-            <!-- <img src="\public\resources\send-outline.svg" alt="Send icon" class="svg-img" /> -->
-            <img src="resources\send-outline.svg" alt="Send icon" class="svg-img" />
-          </button>
-        </div>
-      </div>
-      <div class="chat-containor" id="user-chat4">
-        <div class="only-chat-contain">
-          <div class="chat-user-info">
-            <div class="chat-user-img">
-              <!-- <img src="\public\resources\no-dp.png" alt="" /> -->
-              <img src="resources\no-dp.png" alt="" />
-            </div>
-            <div class="user-name">
-              <p class="name">User-4</p>
-              <p class="activity">Active/Inactive</p>
-            </div>
-          </div>
-          <div class="chatting-content" id="chatting-content4">
-            <div class="received-message">This is a received message</div>
-            <div class="sent-message" id="sent-message2">
-              This is a sent message
-            </div>
-          </div>
-        </div>
-        <div class="message-input">
-          <input type="text" placeholder="Enter your messaage." id="chat-input4"/>
-          <button id="send-button4" onclick="sendButton4()">
-            <!-- <img src="\public\resources\send-outline.svg" alt="Send icon" class="svg-img"/> -->
-            <img src="resources\send-outline.svg" alt="Send icon" class="svg-img"/>
-          </button>
-        </div>
-      </div>
-      <div class="chat-containor" id="user-chat5">
-        <div class="only-chat-contain">
-          <div class="chat-user-info">
-            <div class="chat-user-img">     
-              <!-- <img src="\public\resources\no-dp.png" alt=""/> -->
-              <img src="resources\no-dp.png" alt=""/>
-            </div>
-            <div class="user-name">
-              <p class="name">User-5</p>
-              <p class="activity">Active/Inactive</p>
-            </div>
-          </div>
-          <div class="chatting-content" id="chatting-content5">
-            <div class="received-message">This is a received message</div>
-            <div class="sent-message" id="sent-message2">
-              This is a sent message
-            </div>
-          </div>
-        </div>
-        <form id="message-input-form" action="">
-        <div class="message-input">
-          <input type="text" placeholder="Enter your messaage." id="chat-input5"/>
-          <button id="send-button5" onclick="sendButton5()">
-            <!-- <img src="\public\resources\send-outline.svg" alt="Send icon" class="svg-img" /> -->
-            <img src="resources\send-outline.svg" alt="Send icon" class="svg-img" />
-          </button>
-        </div>
-        </form>
-      </div>
-    </main>
-    <!-- <script src="\public\scripts\script.js"></script> -->
-    <script src="scripts\script.js"></script>
-  </body>
-</html>
+
+      each friend, index in friends
+        - var num = index+1 
+        div(class='card' id='card'+num)
+          .chat-user-img
+            // <img src="\public\resources/no-dp.png" alt="" />
+            img(src='resources/no-dp.png' alt='')
+            span= friend 
+              br
+              p This is a message from the user.
+
+
+      
+
+
+  each friend, index in friends
+    - var num = index+1
+    .info-containor
+    // <img src="\public\resources/logo.png" alt="" />
+    img(src='resources/logo.png' alt='')
+    div(class='chat-containor' id='user-chat'+num)
+      .only-chat-contain
+        .chat-user-info
+          .chat-user-img
+            // <img src="\public\resources/no-dp.png" alt="" />
+            img(src='resources/no-dp.png' alt='')
+          .user-name
+            p.name= friend
+            p.activity Active/Inactive
+        div(class='chatting-content' id='chatting-content'+num)
+          .received-message This is a received message from #{friend}
+          div(class='sent-message' id='sent-message'+num)
+            | This is a sent message 
+      form(action method='post')
+        .message-input
+          input(type='text' placeholder='Enter your messaage.' id='chat-input'+num)
+          button#send-button(onclick='sendButton()')
+            // <img src="\public\resources/send-outline.svg" alt="Send icon" class="svg-img" />
+            img.svg-img(src='resources/send-outline.svg' alt='Send icon')
+              
+  
+          
+script(src='scripts/script.js')

@@ -125,6 +125,7 @@ input {
 
 .card:hover {
     background-color: #959292;
+    cursor: pointer;
 }
 
 .info-containor {
