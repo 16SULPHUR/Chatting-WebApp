@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byte Talk</title>
+    <link rel="stylesheet" type="text/css" href="/public/styles/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Belanosima&family=Poppins:wght@200&display=swap" rel="stylesheet"> 
+    //-<link rel="stylesheet" type="text/css" href="\public\styles\style.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="img"></div>
+            </div>
+            <div class="customer-services">
+                <div class="help">
+                    Help
+                </div>
+                <div class="about-us">
+                    About us
+                </div>
+                <div class="contact">
+                    Contact
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <p id="err">#{message}</p>
+
+    <main>
+        <!-- Log-in form -->
+        <div class="main-div">
+            <h1>patil</h1>
+            <form action="./home.pug" method="post" id="loginForm">
+                <input type="hidden" name="formType" value="login">
+                
+                <!-- <input type="text" id="errMsg" value=#{message}> -->
+
+                <label for="login" class="login-username label">username:</label><br>
+                <input type="text" id="email" class="login-email input" name="username" placeholder="username"><br>
+                <label for="password" class="login-password-label label">Password:</label><br>
+                <input type="password" name="password" id="password" class="login-password input" placeholder="Password"><br>
+                <input type="submit" value="Submit" class="btn submit"><br>
+
+            </form>
+        </div>
+        <!-- Sign-up form -->
+        <div class="main-div">
+            <h1>Sign up</h1>
+            <form action="./home.pug" method="post" name="signup">
+                <input type="hidden" name="formType" class="input" value="signup">
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" class="input" placeholder="example@xyz.com "> <br>
+
+                <label for="username">User Name:</label>
+                <input type="text" name="username" id="username" class="input" placeholder="username"> <br>
+
+
+
+
+                <!-- <label for="password">Phone No:</label>
+                <input type="password" name="password" id="password" class="input" placeholder="+91 00000 00000"> <br> -->
+
+                <label for="password">Set Password:</label>
+                <input type="password" name="password" id="password" class="input" placeholder="Password"> <br>
+
+                <input type="submit" value="Register" class="btn submit"><br>
+            </form>
+        </div>
+    </main>
+    <footer>
+        Byte Talk chatting app. Created to connect people.
+    </footer>
+    <script src="scripts/script.js"></script>
+</body>
+
+</html>
