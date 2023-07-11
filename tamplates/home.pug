@@ -18,6 +18,8 @@ header
       .about-us About us
       .contact Contact
 main 
+  h1#h1 
+    
 
   .containor  
     input#errMsg(type='hidden' name='errMsg' value=message)
@@ -73,9 +75,9 @@ main
             .received-message This is a received message from #{friend}
             div(class='sent-message' id='sent-message'+num)
               | This is a sent message 
-        form(action method='post')
+        form(id="messageForm" method='post')
           .message-input
-            input(type='text' placeholder='Enter your messaage.' id='chat-input'+num)
+            input(type='text' placeholder='Enter your messaage.' id='chat-input cip'+num)
             button#send-button(onclick='sendButton()')
               // <img src="\public\resources/send-outline.svg" alt="Send icon" class="svg-img" />
               img.svg-img(src='resources/send-outline.svg' alt='Send icon')

@@ -19,11 +19,12 @@ input {
 }
 
 .containor {
-    height: 80vh;
+    /* height: 80vh; */
     width: 400px;
     border-radius: 2rem;
     background-color: #ffffff;
     float: left;
+    overflow: scroll;
 }
 
 .user {

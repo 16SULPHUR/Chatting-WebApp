@@ -36,6 +36,8 @@ function loginHandler(body, req, res) {
           username: username,
           friends: friendList,
         });
+
+        console.log("login success")
       }
     });
   });

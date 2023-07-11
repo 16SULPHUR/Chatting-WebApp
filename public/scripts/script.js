@@ -1,5 +1,3 @@
-
-
 console.log("script works");
 
 let sentMessag1 = document.getElementById("sent-message1");
@@ -119,3 +117,21 @@ const errMsg = document.getElementById("errMsg");
 if (errMsg.value) {
   alert(errMsg.value);
 }
+
+// sending AJAX request on sending message
+const form = document.getElementById("messageForm");
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const value = document.getElementById("cip1").value;
+
+  const xhr = new XMLHttpRequest();
+  xhr.open("post", "/ajax");
+  xhr.sendRequestHeader("Content-Type", "application/json");
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      const response = JSON.parse(xhr.responseText);
+      document.getElementById("h1").innerHTML = response.response;
+    }
+  };
+  xhr.send(JSON.stringify({ var: value }));
+});
