@@ -5,6 +5,7 @@ const path = require("path");
 const session = require("express-session");
 var mysql = require("mysql");
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 const httpMsg = require("http-msgs")
 const connectDB = require("./serverPartials/connectDB");
 const loginHandler = require("./serverPartials/loginHandler");
@@ -19,18 +20,21 @@ const port = 3000;
 // Set up session middleware
 app.use(
   session({
+    key:"user_id",
     secret: "$3cret K3y",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    cookie: {
+      expires:600000,
+    }
   })
 );
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded());
 
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
-
 
 
 app.get("/", (req, res) => {

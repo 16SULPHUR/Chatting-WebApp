@@ -16,7 +16,7 @@ function signupHandler(req, res) {
   const query4 = `SELECT username , email FROM \`user information\` WHERE username = '${username}' OR email = '${email}'`;
   mainConn.query(query4, function (err, result) {
     // if (err) throw err;
-    console.log(result[0]);
+    console.log(result);
 
     if (result[0] != undefined) {
       console.log("Duplicate entry");

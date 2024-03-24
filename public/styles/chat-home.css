@@ -1,31 +1,34 @@
-*{
+* {
     box-sizing: border-box;
 }
-main{
-    background-color: #d5f3f2a5;
-    height: 90vh;
+
+main {
+    /* background-color: #d5f3f2a5; */
+    /* height: 127vh; */
     position: absolute;
     display: flex;
     align-items: center;
     padding-left: 50px;
-    top: 10vh;
+    top: 12vh;
     gap: 20px;
     overflow: hidden;
 }
-input{
+
+input {
     font-size: medium;
 }
-.containor{
-    height: 80vh;
+
+.containor {
     width: 400px;
     border-radius: 2rem;
     background-color: #ffffff;
     float: left;
 }
-.user{
+
+.user {
     height: 95px;
     width: 100%;
-    border-radius: 2rem 2rem 0 0 ;
+    border-radius: 2rem 2rem 0 0;
     border-bottom: 2px solid black;
     padding: 1.5rem;
     padding-left: 80px;
@@ -33,25 +36,29 @@ input{
     font-weight: 500;
     position: relative;
 }
-.user-img img{
+
+.user-img img {
     height: 35px;
     width: 35px;
     border-radius: 50%;
     position: absolute;
     left: 30px;
 }
-.chat-user-img img{
+
+.chat-user-img img {
     height: 40px;
-    width:  40px;
+    width: 40px;
     border-radius: 50%;
     position: absolute;
     left: 20px;
     top: 10px;
 }
-.user p{
+
+.user p {
     font-size: small;
 }
-.user button{
+
+.user button {
     height: 40px;
     width: 80px;
     position: absolute;
@@ -61,56 +68,69 @@ input{
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
 }
-.user button:hover{
+
+.user button:hover {
     background-color: grey;
     color: cyan;
 }
-.user h5{
+
+.user h5 {
     color: grey;
     position: absolute;
     bottom: 5px;
     left: 40px;
 }
-.wrapper{
+
+.wrapper {
     position: relative;
+    overflow-y: scroll;
+    height: 90vh;
+
 }
-.wrapper input{
+
+.wrapper input {
     height: 30px;
     width: 290px;
     margin: 10px 0px 10px 40px;
     padding-left: 10px;
     border-radius: .5rem;
 }
-.wrapper button{
+
+.wrapper button {
     height: 30px;
     width: 30px;
     padding: 2px;
     position: absolute;
-    top:10px ;
-    right:34px ;
+    top: 10px;
+    right: 34px;
     border-radius: 0 .5rem .5rem 0;
     background-color: #000000;
 }
-.wrapper button:hover{
-    background-color:grey;
+
+.wrapper button:hover {
+    background-color: grey;
 }
-.card{
+
+.card {
     height: 60px;
-    box-shadow: 2px 2px 4px rgba(128,128,128,0.7);
+    box-shadow: 2px 2px 4px rgba(128, 128, 128, 0.7);
     position: relative;
     padding: .8rem;
     padding-left: 80px;
 }
-.card p{
+
+.card p {
     padding-top: 5px;
     font-size: small;
     color: rgb(109, 108, 108);
 }
-.card:hover{
+
+.card:hover {
     background-color: #959292;
     cursor: pointer;
 }
-.info-containor{
+
+.info-containor {
     height: 80vh;
     width: 70vw;
     background-color: #fff;
@@ -118,22 +138,25 @@ input{
     margin: 0 40px;
     position: relative;
 }
-.info-containor img{
+
+.info-containor img {
     height: 400px;
-    width:  400px;
+    width: 400px;
     position: absolute;
     top: 15%;
     left: 30%;
     margin-bottom: 100px;
 }
-.info-containor p{
+
+.info-containor p {
     position: fixed;
     top: 60%;
     left: 26%;
     font-size: larger;
     font-weight: 500;
 }
-.chat-containor{
+
+.chat-containor {
     height: 80vh;
     width: 70vw;
     background-color: #ffffffb8;
@@ -144,30 +167,35 @@ input{
     right: -2000px;
     border: 2px solid black;
 }
-.chat-containor::-webkit-scrollbar{
+
+.chat-containor::-webkit-scrollbar {
     width: 0em;
 }
-.chat-user-info{
+
+.chat-user-info {
     height: 70px;
     width: 64.8vw;
     padding-left: 80px;
     border-bottom: 2px solid black;
-    box-shadow: 2px 2px 4px rgba(128,128,128,0.7);
+    box-shadow: 2px 2px 4px rgba(128, 128, 128, 0.7);
     border-radius: 2rem 2rem 0 0;
     background-color: #fff;
     position: fixed;
     top: 113px;
 }
-.user-name{
+
+.user-name {
     padding-top: 10px;
     font-size: large;
     font-weight: 400;
 }
-.activity{
+
+.activity {
     color: grey;
     font-size: medium;
 }
-.only-chat-contain{
+
+.only-chat-contain {
     background-color: #ffffff7b;
     padding-top: 70px;
     height: 60vh;
@@ -175,7 +203,8 @@ input{
     position: absolute;
     top: 0px;
 }
-.message-input{
+
+.message-input {
     height: 60px;
     width: 64.8vw;
     display: flex;
@@ -183,14 +212,16 @@ input{
     bottom: 38px;
     border-radius: 0 0 2rem 2rem;
 }
-.message-input input{
+
+.message-input input {
     height: 60px;
     width: 90%;
     padding-left: 20px;
     border-radius: 0 0 0 2rem;
     padding: 20px;
 }
-.message-input button{
+
+.message-input button {
     height: 60px;
     width: 10%;
     background-color: #000000;
@@ -199,32 +230,36 @@ input{
     border-radius: 0 0 2rem 0;
     overflow: hidden;
 }
-.message-input button:hover{
+
+.message-input button:hover {
     background-color: #777676;
 }
-.svg-img{
+
+.svg-img {
     height: 50px;
     width: 60px;
     position: absolute;
     top: 5px;
     right: 15px;
 }
-.received-message{
+
+.received-message {
     word-wrap: break-word;
-    min-height: 30px ;
+    min-height: 30px;
     max-width: 200px;
-    background-color:rgb(170, 172, 174);
+    background-color: rgb(170, 172, 174);
     border-radius: .5rem .5rem .5rem 0;
     margin: 10px;
     padding: 10px;
 }
-.sent-message{
+
+.sent-message {
     word-wrap: break-word;
-    min-height: 30px ;
+    min-height: 30px;
     max-width: 500px;
-    background-color:rgb(170, 172, 174);
+    background-color: rgb(170, 172, 174);
     border-radius: .5rem .5rem 0 .5rem;
     margin: 10px;
-    padding:10px;
+    padding: 10px;
     float: right;
 }
